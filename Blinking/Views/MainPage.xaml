@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="Blinking.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Blinking"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding MainViewModel, Source={StaticResource vmLocator}}"
+    mc:Ignorable="d">
+
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="0.5*" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+
+		<Image 
+				x:Name="eyeImage" 
+				Source="{Binding Flag, 
+                   Converter={StaticResource imageConverter}}"			
+				Height="250"/>
+		<Button
+				x:Name="eyeButton"
+				Content="{Binding Flag,
+						 Converter={StaticResource buttonConverter}}"
+				Command="{Binding ButtonCommand}"
+				Grid.Column="0"
+				Grid.Row="1"/>
+	</Grid>
+</Page>
